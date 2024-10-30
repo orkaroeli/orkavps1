@@ -1,0 +1,13 @@
+deployments:
+  MyWebApp:
+    dockerimage: ubuntu:14.04
+    build_steps:
+      - apt-get update && apt-get install -y libssl-dev libpq-dev git \
+        python python-dev python-pip python-virtualenv
+      - pip install setuptools pip
+      - pip install /code
+      
+      
+    launch_steps:
+      - cd /myproject/mysite
+      - python manage.py runserver 0.0.0.0:80
